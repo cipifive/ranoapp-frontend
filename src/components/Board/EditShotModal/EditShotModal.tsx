@@ -102,9 +102,9 @@ export const EditShotModal:FC<any> = (props):JSX.Element => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 className="font-game2">El lanzamiento {selectedShot + 1} fue:</h2>
+        <h2 className="font-game2 text-black">El lanzamiento {selectedShot + 1} fue:</h2>
         <button>{renderItemBoard()}</button>
-        <div className="font-game2">Selecciona la casilla por la que quieras cambiarlo</div>
+        <div className="font-game2 text-black">Selecciona la casilla por la que quieras cambiarlo</div>
         
         <div className="grid grid-cols-3 p-2 gap-4 h-1/2 w-full  ">
             <div className={`flex justify-center items-center rounded ${selectedItem === 1? 'bg-amber-400 text-black' : 'bg-[#100235] text-amber-400 '}   border rounded relative`} onClick={() => setSelectedItem(1)}>
@@ -139,7 +139,7 @@ export const EditShotModal:FC<any> = (props):JSX.Element => {
             <div className={`flex justify-center items-center ${selectedItem === 10? 'bg-amber-400 text-black' : 'bg-[#100235] text-amber-400 '} text-3xl   border rounded  mr-2 ml-2  rounded h-16 relative`}  onClick={() => setSelectedItem(10)} >
                 <span className={`font-game2 ${selectedItem === 10?'text-black' : ''}`}>FUERA</span>
             </div>
-            <h2 className="font-game2 mt-2">El lanzamiento se sustituirá por:</h2>
+            <h2 className="font-game2 mt-2 text-black">El lanzamiento se sustituirá por:</h2>
             <button>{renderItemBoard(selectedItem)}</button>
             <div className="flex w-full justify-around items-center p-4  mt-2 rounded">
                 <span className={`text-center w-1/3  p-3 text-xl font-game2   rounded ${!selectedItem? 'bg-zinc-300' : 'bg-[#fcd34d]'}`} onClick={!selectedItem? () => {} : () => handleUpdateShot()}>Editar</span>
