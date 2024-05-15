@@ -1,0 +1,58 @@
+.ag-cell {
+    display: flex !important;
+}
+
+.ag-theme-quartz {
+    
+    --ag-background-color: rgb(249, 245, 227) !important;
+    --ag-header-foreground-color: black !important;
+    --ag-header-background-color: #fcd34d !important;
+    --ag-odd-row-background-color: rgb(0, 0, 0, 0.03) !important;
+    --ag-header-column-resize-handle-color: rgb(126, 46, 132) !important;
+
+    
+}
+
+.punct > .ag-layout-normal > .ag-layout-normal > .ag-layout-normal > .ag-header > .ag-header-viewport > .ag-header-container {
+    width: 100% !important;
+}
+
+.punct > .ag-layout-normal > .ag-layout-normal > .ag-layout-normal > .ag-header > .ag-header-viewport > .ag-header-container > div {
+    display: flex !important;
+    width: 100% !important;
+}
+
+.punct > .ag-layout-normal > .ag-layout-normal > .ag-layout-normal > .ag-header > .ag-header-viewport > .ag-header-container > div > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 20px !important;
+    flex: 1 !important;
+    display: block !important;
+    position: initial !important;
+}
+
+.punct > .ag-layout-normal > .ag-layout-normal > .ag-layout-normal > .ag-header > .ag-header-viewport > .ag-header-container > div > div > .ag-header-cell-comp-wrapper > .ag-cell-label-container > .ag-header-cell-label > .ag-header-cell-text {
+    width: 100% !important;
+    text-align: center !important;
+   
+}
+
+.punct > .ag-layout-normal > .ag-layout-normal > .ag-layout-normal > .ag-body > .ag-body-viewport > .ag-center-cols-viewport > div {
+    width: 100% !important;
+}
+
+.punct > .ag-layout-normal > .ag-layout-normal > .ag-layout-normal > .ag-body > .ag-body-viewport > .ag-center-cols-viewport > div > div {
+    display: flex !important;
+   
+}
+
+.punct > .ag-layout-normal > .ag-layout-normal > .ag-layout-normal > .ag-body > .ag-body-viewport > .ag-center-cols-viewport > div > div > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    position:initial !important;
+    justify-content: center !important;
+}
+
+.row-selected {
+    background-color: orange !important;
+}

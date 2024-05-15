@@ -1,0 +1,53 @@
+import { FC, useRef, useState } from "react"
+import { IRound } from "../../../models/round"
+import { useRoundStore } from "../../../Zustand/roundStore"
+import mill_sound from '../../../assets/mill.mp3'
+import { playSound } from "../../../utils/helperFunctions"
+import { PiSpinnerBallLight } from "react-icons/pi";
+
+export const Mill:FC<any> = (props):JSX.Element => {
+
+    const { id, selectedShot, turn }:any = props
+
+    const audioRef:any = useRef()
+
+    const { addShot,round,shot,points,history }:IRound = useRoundStore()
+
+    const [rotate, setRotate] = useState<boolean>(false)
+
+    const handleAddShot = () => {
+        let items = history.filter((h:any) => h.box === id).length
+        const top = -2 + items*12
+        addShot(turn.id,round,shot + 1,points + 25,[...history,{round:round,shot:shot,points:25,box:id,x:top,y:0}])
+        setRotate(true)
+        playSound(audioRef)
+        setTimeout(() => {
+            setRotate(false)
+        },3000)
+    }
+    
+    return (
+        <div className="flex justify-center items-center  bg-[#100235] border rounded text-amber-400 relative" onClick={shot === 10? () => {} : () => handleAddShot()}>
+            {
+                selectedShot !== 11?
+                history.filter((ss:any) => selectedShot === ss.shot).map((h:any) => {
+                    if(h.box === id) {
+                        return (
+                            <span key={`${h.round}.${h.shot}`} className={`absolute text-sm`} style={{top:h.x,right:h.y,fontWeight:"bold"}}>{h.shot + 1}</span>
+                        )
+                    }
+                })
+                :
+                    history.map((h:any) => {
+                        if(h.box === id) {
+                            return (
+                                <span key={`${h.round}.${h.shot}`} className={`absolute text-sm`} style={{top:h.x,right:h.y,fontWeight:"bold"}}>{h.shot + 1}</span>
+                            )
+                        }
+                    })
+            }
+            <audio ref={audioRef} src={mill_sound} />
+            <PiSpinnerBallLight className={`${rotate? 'board-spin-icon' : ''}`} size={65} />
+        </div>
+    )
+}

@@ -1,0 +1,123 @@
+/* Definir la animación */
+@keyframes spin {
+    from {
+      transform: rotate(0deg); /* Inicio de la rotación */
+    }
+    to {
+      transform: rotate(360deg); /* Fin de la rotación (una vuelta completa) */
+    }
+  }
+  
+  /* Aplicar la animación */
+  .board-spin-icon {
+    animation: spin 2s linear infinite; /* Nombre de la animación, duración, tipo de animación y repetición (infinito) */
+  }
+
+  @keyframes reducir {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+
+  .screen_component_reduce {
+    animation: reducir 0.25s ease forwards;
+  }
+
+  @keyframes aumentar {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .screen_component_aument{
+    animation: aumentar 0.25s ease forwards;
+  }
+
+  @keyframes salirHaciaIzquierda {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+  
+  .screen_component_salir_izquierda {
+    animation: salirHaciaIzquierda 0.25s ease forwards;
+  }
+
+  @keyframes entrarHaciaIzquierda {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+      
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .screen_component_entrar_izquierda {
+    animation: entrarHaciaIzquierda 0.25s ease forwards;
+  }
+
+  @keyframes salirHaciaDerecha {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .screen_component_salir_derecha {
+    animation: salirHaciaDerecha 0.25s ease forwards;
+  }
+
+  @keyframes entrarHaciaDerecha {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+      
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .screen_component_entrar_derecha {
+    animation: entrarHaciaDerecha 0.25s ease forwards;
+  }
+
+  .countdown {
+   
+    transform: translate(-50%, -50%);
+    animation: anim 1s ease-in-out infinite;
+  }
+  @keyframes anim {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(12);
+      opacity: 0;
+    }
+  }
+  

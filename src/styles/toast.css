@@ -1,0 +1,8 @@
+.Toastify__toast-body > div {
+    text-align: center;
+}
+
+.Toastify__close-button {
+    color: orange;
+    opacity: 1;
+}
