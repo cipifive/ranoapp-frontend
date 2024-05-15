@@ -1,7 +1,7 @@
 import { FC, useState } from "react"
 import { IUser } from "../../../models/users"
 import { createUser } from "../../../services/user_service"
-import { error, success } from "../../../utils/toast"
+import { success } from "../../../utils/toast"
 import { catchResponse } from "../../../utils/helperFunctions"
 import { MdAddAPhoto } from "react-icons/md";
 

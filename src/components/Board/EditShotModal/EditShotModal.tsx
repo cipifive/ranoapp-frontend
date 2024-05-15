@@ -1,10 +1,5 @@
 import { FC, useState } from "react"
 import Modal from 'react-modal';
-import { Board } from "../Board";
-import { Hole } from "../Items/Hole";
-import { Frog } from "../Items/Frog";
-import { Bridge } from "../Items/Bridge";
-import { Mill } from "../Items/Mill";
 import { GiFrogPrince, GiHole } from "react-icons/gi";
 import { FaBridge } from "react-icons/fa6";
 import { PiSpinnerBallLight } from "react-icons/pi";

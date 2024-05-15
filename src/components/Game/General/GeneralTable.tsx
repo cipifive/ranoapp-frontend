@@ -22,7 +22,7 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
     }
       
       // Column Definitions: Defines the columns to be displayed.
-      const [colDefs, setColDefs] = useState<any>([
+      const [colDefs] = useState<any>([
         { field: "id", hide:true, headerName: '', resizable:false, cellRenderer: nameRenderer, tooltipField:"name"},
         { field: "name", suppressMovable: true,  headerName: '', resizable:false, cellRenderer: nameRenderer, tooltipField:"name"},
         { field: "round1", suppressMovable: true, headerName: "R1", resizable:false },

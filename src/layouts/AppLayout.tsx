@@ -5,7 +5,6 @@ export const AppLayout:FC<any> = (props):JSX.Element => {
 
     const {
         Component,
-        utilities,
     } = props
 
    const { reduce }:any = useTransitionStore()

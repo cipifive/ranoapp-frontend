@@ -14,7 +14,7 @@ import { EditPlayer } from "../../components/Players/EditPlayer/EditPlayer";
 import { getUsers } from "../../services/user_service";
 import { IUser } from "../../models/users";
 
-export const Players:FC<any> = (props):JSX.Element => {
+export const Players:FC<any> = ():JSX.Element => {
 
     const [users, setUsers] = useState<IUser[]>([])
 

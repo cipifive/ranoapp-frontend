@@ -24,7 +24,7 @@ export const RankingTable:FC<any> = () => {
       
     }
 
-    const [rowData, setRowData] = useState<any>([
+    const [rowData] = useState<any>([
         { rank: "1", name: "Emilio", points: 64950 },
         { rank: "2", name: "MariPaz", points: 33850 },
         { rank: "3", name: "Alicia", points: 29600, },
@@ -34,7 +34,7 @@ export const RankingTable:FC<any> = () => {
       ]);
       
       // Column Definitions: Defines the columns to be displayed.
-      const [colDefs, setColDefs] = useState<any>([
+      const [colDefs] = useState<any>([
         { field: "rank", cellRenderer: rankRenderer, flex:0.5, headerName: "Nº", resizable:false },
         { field: "name", flex:1, headerName: "Jugador", resizable:false },
         { field: "points", flex:1, headerName: "Puntos", resizable:false },

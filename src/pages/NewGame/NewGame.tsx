@@ -8,7 +8,6 @@ import { catchResponse, handleClickHomeButton } from "../../utils/helperFunction
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import moment from "moment";
 import { MultiSelect } from "primereact/multiselect";
-import { jugadores } from "../../constants/Game/data";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { CountDown } from "../../components/NewGame/CountDown";
 import { IUser } from "../../models/users";
@@ -17,7 +16,7 @@ import { createGame } from "../../services/game_service";
 import { INewGame } from "../../models/game";
 
 
-export const NewGame:FC<any> = (props):JSX.Element => {
+export const NewGame:FC<any> = ():JSX.Element => {
 
     const { setReduce }:any = useTransitionStore()
 

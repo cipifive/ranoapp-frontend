@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { NavigationBar } from "../../components/Game/NavigationBar"
 import { Board } from "../../components/Board/Board"
 import { General } from "../../components/Game/General/General"
-import { catchResponse, handleClickHomeButton, playSound } from "../../utils/helperFunctions"
+import { handleClickHomeButton, playSound } from "../../utils/helperFunctions"
 import { useSoundStore } from "../../Zustand/soundStore"
 import { ISound } from "../../models/settings"
 import { FaLongArrowAltLeft } from "react-icons/fa";
@@ -14,7 +14,7 @@ import clic_sound from '../../assets/button_clic.wav'
 import { getGameByID } from "../../services/game_service"
 import { error } from "../../utils/toast"
 
-export const Game:FC<any> = (props):JSX.Element => {
+export const Game:FC<any> = ():JSX.Element => {
 
     const [selectedMenu, setSelectedMenu] = useState<number>(1)
     const [prevSelectedMenu, setPrevSelectedMenu] = useState<number>(0)

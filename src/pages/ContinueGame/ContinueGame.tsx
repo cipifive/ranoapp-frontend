@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { getGameByID, getStartedGames } from "../../services/game_service"
 import { IUser } from "../../models/users"
 
-export const ContinueGame:FC<any> = (props):JSX.Element => {
+export const ContinueGame:FC<any> = ():JSX.Element => {
 
     const { setReduce }:any = useTransitionStore()
 

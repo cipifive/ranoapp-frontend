@@ -1,6 +1,6 @@
 import { FC, useRef } from "react"
 import clic_sound from '../../assets/button_clic.wav'
-import { handleClickHomeButton, playSoundButton } from "../../utils/helperFunctions"
+import { handleClickHomeButton } from "../../utils/helperFunctions"
 import { ISound } from "../../models/settings"
 import { useSoundStore } from "../../Zustand/soundStore"
 import { useNavigate } from "react-router-dom"

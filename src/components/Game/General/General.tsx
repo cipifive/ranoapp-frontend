@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { GeneralTable } from "./GeneralTable";
 
 export const General:FC<any> = (props):JSX.Element => {

@@ -17,7 +17,7 @@ import { ContinueGame } from './pages/ContinueGame/ContinueGame';
 
 function App() {
 
-  const { music,sounds,ref,changeSettings }:ISound = useSoundStore()
+  const { music,sounds,changeSettings }:ISound = useSoundStore()
 
   console.log(music)
 

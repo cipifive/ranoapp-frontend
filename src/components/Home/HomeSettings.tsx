@@ -6,7 +6,7 @@ import { IoMdVolumeOff } from "react-icons/io";
 import { ISound } from "../../models/settings";
 import { useSoundStore } from "../../Zustand/soundStore";
 
-export const HomeSettings:FC<any> = (props):JSX.Element => {
+export const HomeSettings:FC<any> = ():JSX.Element => {
 
     const { music, sounds,ref, changeSettings}:ISound = useSoundStore()
 

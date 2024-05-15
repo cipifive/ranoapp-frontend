@@ -2,7 +2,7 @@ import { FC } from "react"
 import { IRound } from "../../../models/round"
 import { useRoundStore } from "../../../Zustand/roundStore"
 
-export const Shots:FC<any> = (props):JSX.Element => {
+export const Shots:FC<any> = ():JSX.Element => {
 
     const { shot }:IRound = useRoundStore()
     
