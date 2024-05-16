@@ -49,7 +49,7 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
         },
     }
 
-    const getRowStyle = (params:any) => {
+    const getRowStyle:any = (params:any) => {
         const maxPoints = Math.max(...data.map((d:any) => d.total))
         if(params.data.total === maxPoints) {
             return {
@@ -57,7 +57,7 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
                 color: '#FB8C00'
             }
         }
-        return null
+        return true
     }
 
     return (
