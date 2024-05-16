@@ -8,6 +8,7 @@ import { ISound } from "../../models/settings"
 import { useNavigate } from "react-router-dom"
 import { getGameByID, getStartedGames } from "../../services/game_service"
 import { IUser } from "../../models/users"
+import { Loading } from "../../components/shared/Loading"
 
 export const ContinueGame:FC<any> = ():JSX.Element => {
 
@@ -19,6 +20,8 @@ export const ContinueGame:FC<any> = ():JSX.Element => {
 
     const audioRef:any = useRef()
 
+    const [loading, setLoading] = useState<boolean>(false)
+
     const [games, setGames] = useState<any>([])
 
     const [selectedGame, setSelectedGame] = useState<any | undefined>()
@@ -27,15 +30,17 @@ export const ContinueGame:FC<any> = ():JSX.Element => {
 
     const handleSelectGame = async(e:any) => {
         try {
+            setLoading(true)
             const name = e.target.value
             setSelectedGame(games.find((game:any) => game.name === name))
             const response = await getGameByID(games.find((game:any) => game.name === name)?.id)
             if(response.status === 200) {
-                console.log(response.data.data)
+                setLoading(false)
                 setGameInfo(response.data.data)
             }
+            setLoading(false)
         } catch (err:any) {
-            
+            setLoading(false)
         }
         
     }
@@ -67,7 +72,7 @@ export const ContinueGame:FC<any> = ():JSX.Element => {
 
             <div className="flex flex-col self-start p-4 text-[#fcd34d] font-game2 text-2xl w-10/12  mb-8">
                     <span>Partida</span>
-                    <select className="h-12 font-game2 text-2xl p-1 text-black" onChange={handleSelectGame}>
+                    <select className="h-12 font-game2 text-2xl p-1 rounded bg-white text-black" onChange={handleSelectGame}>
                         <option className="text-xl" defaultChecked></option>
                         {
                             games.map((game:any) => (<option key={game.id} className="text-sm">{game.name}</option>))
@@ -77,6 +82,9 @@ export const ContinueGame:FC<any> = ():JSX.Element => {
 
             <div className="flex justify-center text-white border h-1/2 w-full">
                 {
+                    loading?
+                    <Loading message={"Cargando información"} />
+                    :
                     gameInfo !== undefined?
                     <div className="flex flex-col justify-start h-full p-4 w-full items-start">
                         <div className="flex flex-col text-[#fcd34d] font-game2 text-2xl w-full mb-4">
@@ -93,7 +101,7 @@ export const ContinueGame:FC<any> = ():JSX.Element => {
                         </div>
                         <div className="flex flex-col text-[#fcd34d] font-game2 text-2xl w-full mb-4">
                             <span>Ronda</span>
-                            <span className="text-white">{gameInfo.round}</span>
+                            <span className="text-white">{gameInfo.round <=10? gameInfo.round : 'Pendiente de finalizar'}</span>
                         </div>
                         
                     </div>
@@ -103,7 +111,7 @@ export const ContinueGame:FC<any> = ():JSX.Element => {
                 
             </div>
 
-            <span className="text-center self-center p-4 text-2xl font-game2 mt-8  bg-[#fcd34d] rounded" onClick={handleContinueGame}>Continuar</span>
+            <span className={`text-center self-center p-4 text-2xl font-game2 mt-8 ${loading || !gameInfo? 'bg-zinc-300' : 'bg-[#fcd34d]'}  rounded`} onClick={!gameInfo || loading? () => {} : () => handleContinueGame()}>Continuar</span>
 
             <audio ref={audioRef} muted={!sounds} src={clic_sound} />
 

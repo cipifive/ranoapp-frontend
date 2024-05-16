@@ -20,10 +20,10 @@ export const HomeButtons:FC<any> = ():JSX.Element => {
 
         <div className="flex flex-col justify-around h-2/4">
             
-            <span className="text-center p-2 text-2xl font-game2 bg-amber-500 rounded" onClick={() => handleClickHomeButton("/new-game",audioRef,setReduce,navigate)}>Nueva Partida</span>
-            <span className="text-center p-2 text-2xl font-game2 bg-amber-500 rounded" onClick={() => handleClickHomeButton("/continue-game",audioRef,setReduce,navigate)}>Continuar Partida</span>
-            <span className="text-center p-2 text-2xl font-game2 bg-amber-500 rounded" onClick={() => handleClickHomeButton("/players",audioRef,setReduce,navigate)}>Jugadores</span>
-            <span className="text-center p-2 text-2xl font-game2 bg-amber-500 rounded" onClick={() => handleClickHomeButton("/new-game",audioRef,setReduce,navigate)}>Ajustes</span>
+            <span className="text-center p-4 text-2xl font-game2 bg-amber-500 rounded" onClick={() => handleClickHomeButton("/new-game",audioRef,setReduce,navigate)}>Nueva Partida</span>
+            <span className="text-center p-4 text-2xl font-game2 bg-amber-500 rounded" onClick={() => handleClickHomeButton("/continue-game",audioRef,setReduce,navigate)}>Continuar Partida</span>
+            <span className="text-center p-4 text-2xl font-game2 bg-amber-500 rounded" onClick={() => handleClickHomeButton("/players",audioRef,setReduce,navigate)}>Jugadores</span>
+            <span className="text-center p-4 text-2xl font-game2 bg-amber-500 rounded" onClick={() => handleClickHomeButton("/new-game",audioRef,setReduce,navigate)}>Ajustes</span>
             <audio ref={audioRef} muted={!sounds} src={clic_sound} />
         </div>
     )

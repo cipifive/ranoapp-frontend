@@ -139,7 +139,7 @@ export const NewGame:FC<any> = ():JSX.Element => {
                 
                 <div className="text-[#fcd34d] font-game2 text-2xl w-full mb-4">
                     <span>Nombre de la partida</span>
-                    <input className="w-full h-12 font-game2 rounded  text-xl p-1 text-[#100235]" onChange={(e:any) => setNameGame(e.target.value)} value={nameGame} />
+                    <input className="w-full h-12 font-game2 rounded bg-white  text-xl p-1 text-[#100235]" onChange={(e:any) => setNameGame(e.target.value)} value={nameGame} />
                 </div>
                 <div className="flex flex-col  text-[#fcd34d] font-game2 text-2xl w-full  mb-8">
                     <span>Jugadores</span>

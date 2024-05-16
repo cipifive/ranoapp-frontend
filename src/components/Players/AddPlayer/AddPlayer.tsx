@@ -48,11 +48,11 @@ export const AddPlayer:FC<any> = (props):JSX.Element => {
             <div className="flex flex-col justify-start h-2/4 p-4 pt-10 w-full items-start">
                 <div className="text-[#fcd34d] font-game2 text-2xl w-full mb-4">
                     <span>Identificador</span>
-                    <input onChange={(e:any) => setNewUser({...newUser,id:e.target.value})} value={newUser.id} type="text" max={7} min={7} maxLength={7} className="w-full h-12 font-game2 rounded  text-xl p-1 text-[#100235]" placeholder={'DDMMYYA'} />
+                    <input onChange={(e:any) => setNewUser({...newUser,id:e.target.value})} value={newUser.id} type="text" max={7} min={7} maxLength={7} className="w-full h-12 font-game2 rounded bg-white text-xl p-1 text-[#100235]" placeholder={'DDMMYYA'} />
                 </div>
                 <div className="text-[#fcd34d] font-game2 text-2xl w-full mb-8">
                     <span>Nombre</span>
-                    <input onChange={(e:any) => setNewUser({...newUser,name:e.target.value})} value={newUser.name} className="w-full h-12 font-game2 rounded  text-xl p-1 text-[#100235]" />
+                    <input onChange={(e:any) => setNewUser({...newUser,name:e.target.value})} value={newUser.name} className="w-full h-12 font-game2 rounded bg-white text-xl p-1 text-[#100235]" />
                 </div>
                 <span onClick={newUser.id === '000000A' || newUser.name === "" || newUser.id.length !== 7? () => {} : () => handleCreateUser()} className={`${newUser.id === '000000A' || newUser.name === "" || newUser.id.length !== 7? 'bg-zinc-300' : ' bg-[#fcd34d]'}  text-center self-center p-4 text-2xl font-game2 rounded`}>Guardar</span>
             </div>

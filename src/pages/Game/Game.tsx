@@ -13,6 +13,7 @@ import { useTransitionStore } from "../../Zustand/transitionStore"
 import clic_sound from '../../assets/button_clic.wav'
 import { getGameByID } from "../../services/game_service"
 import { error } from "../../utils/toast"
+import { Loading } from "../../components/shared/Loading"
 
 export const Game:FC<any> = ():JSX.Element => {
 
@@ -28,6 +29,8 @@ export const Game:FC<any> = ():JSX.Element => {
     const { sounds }:ISound = useSoundStore()
 
     const [data, setData] = useState<any>()
+
+    const [loading, setLoading] = useState<boolean>(false)
 
 
     const {id}:any = useParams()
@@ -89,7 +92,8 @@ export const Game:FC<any> = ():JSX.Element => {
                 prevSelectedMenu={prevSelectedMenu}
                 turn={turn}
                 ronda={round}
-                gameData={data}  
+                gameData={data}
+                nextPlayer={nextPlayer}  
                 setNextPlayer={setNextPlayer} />
             )
         }
@@ -97,27 +101,33 @@ export const Game:FC<any> = ():JSX.Element => {
 
     const fetchGameByID = async () => {
         try {
+            setLoading(true)
             const res = await getGameByID(id)
             if(res.status === 200) {
-                setRound(res.data.data.round)
-                const roundHistory = res.data.data.history.filter((item:any) => item.id_round === res.data.data.round);
-
-                // Obtener el ID del último jugador que realizó un movimiento en la ronda actual
-                const lastPlayerId = roundHistory.length > 0 ? roundHistory[roundHistory.length - 1].id_user : null;
-
-                // Encontrar el índice del último jugador en el arreglo de jugadores
-                const lastPlayerIndex = res.data.data.players.findIndex((player:any) => player.id === lastPlayerId);
-
-                // Calcular el índice del siguiente jugador
-                const nextPlayerIndex = (lastPlayerIndex + 1) % res.data.data.players.length;
-
-                // Obtener el siguiente jugador
-                const nextPlayer = res.data.data.players[nextPlayerIndex];
-
-                setTurn(nextPlayer)
-                setData(res.data.data)
+                
+                    setRound(res.data.data.round)
+                    const roundHistory = res.data.data.history.filter((item:any) => item.id_round === res.data.data.round);
+    
+                    // Obtener el ID del último jugador que realizó un movimiento en la ronda actual
+                    const lastPlayerId = roundHistory.length > 0 ? roundHistory[roundHistory.length - 1].id_user : null;
+    
+                    // Encontrar el índice del último jugador en el arreglo de jugadores
+                    const lastPlayerIndex = res.data.data.players.findIndex((player:any) => player.id === lastPlayerId);
+    
+                    // Calcular el índice del siguiente jugador
+                    const nextPlayerIndex = (lastPlayerIndex + 1) % res.data.data.players.length;
+    
+                    // Obtener el siguiente jugador
+                    const nextPlayer = res.data.data.players[nextPlayerIndex];
+    
+                    setTurn(nextPlayer)
+                    setData(res.data.data)
+                
+                    setLoading(false)
             }
+            setLoading(false)
         } catch (err:any) {
+            setLoading(false)
             error("Partida no encontrada")
             navigate("/")
         }
@@ -147,10 +157,13 @@ export const Game:FC<any> = ():JSX.Element => {
                 }
             </span>
             {
-                ! (turn || round)?
-                false
+                ! (turn || round) || loading?
+                
+                    
+                    <Loading message={"Cargando partida"} />
+            
                 :
-                <div className="h-full w-full mb-16" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+                <div className="h-full w-full mb-16" onTouchStart={round <= 10? (e:any) => handleTouchStart(e) : () => {}} onTouchEnd={round <= 10? (e:any) => handleTouchEnd(e) : () => {}}>
                     {renderGame()}
                   
                 </div>
@@ -159,7 +172,7 @@ export const Game:FC<any> = ():JSX.Element => {
             {
               
             }
-            <NavigationBar selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} />
+            <NavigationBar selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} round={round}  />
             
             
             

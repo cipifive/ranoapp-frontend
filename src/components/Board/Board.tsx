@@ -19,7 +19,7 @@ export const Board:FC<any> = (props):JSX.Element => {
         ronda,
         setNextPlayer,
         nextPlayer,
-        gameData
+      
     } = props
 
     const { addShot,shot,points,history }:IRound = useRoundStore()
@@ -30,8 +30,7 @@ export const Board:FC<any> = (props):JSX.Element => {
 
     const { id }:any = useParams()
 
-    
-
+    const [loading, setLoading] = useState<boolean>(false)
 
     const handleSelectShot = (e:any) => {
         setSelectedShot(parseInt(e.target.value))
@@ -49,7 +48,7 @@ export const Board:FC<any> = (props):JSX.Element => {
 
     const handleSave = async() => {
         try {
-            console.log(gameData)
+            setLoading(true)
             let body:ISaveRound = {
                 id_game: id,
                 id_user: turn.id,
@@ -63,10 +62,11 @@ export const Board:FC<any> = (props):JSX.Element => {
                 setNextPlayer(!nextPlayer)
                 setSelectedMenu(1)
                 addShot("",1,0,0,[])
+                setLoading(false)
             }
-            
+            setLoading(false)
         } catch (err:any) {
-            
+            setLoading(false)
         }
         
     }
@@ -89,7 +89,7 @@ export const Board:FC<any> = (props):JSX.Element => {
                 </div>
             </div>
             <div className="">
-                <select className="p-3 font-game2 rounded  w-10/12" onChange={handleSelectShot}>
+                <select className="p-3 font-game2 rounded bg-white  w-10/12" onChange={handleSelectShot}>
                     <option value={11}>Todas</option>
                     {history.map((h:any) => {
                         return <option value={h.shot}>Lanzamiento {h.shot + 1}</option>
@@ -165,8 +165,8 @@ export const Board:FC<any> = (props):JSX.Element => {
             }
             </div>
             <div className="flex w-full justify-around items-center p-4  mt-2 rounded">
-                <span onClick={selectedShot === 11? () => {} : () => handleEditShot()} className={`text-center w-1/3 p-3 text-xl font-game2 ${selectedShot === 11? 'bg-zinc-300' : 'bg-[#fcd34d]'}   rounded`}>Editar</span>
-                <span className={`text-center w-1/3  p-3 text-xl font-game2   rounded ${shot < 10? 'bg-zinc-300' : 'bg-[#fcd34d]'}`} onClick={shot === 10? () => handleSave() : () => {}}>Guardar</span>
+                <span onClick={selectedShot === 11 || loading? () => {} : () => handleEditShot()} className={`text-center w-1/3 p-3 text-xl font-game2 ${selectedShot === 11 || loading? 'bg-zinc-300' : 'bg-[#fcd34d]'}   rounded`}>Editar</span>
+                <span className={`flex justify-center items-center text-center w-1/3  p-3 text-xl font-game2   rounded ${shot < 10 || loading? 'bg-zinc-300' : 'bg-[#fcd34d]'}`} onClick={shot === 10 && !loading? () => handleSave() : () => {}}>{loading? <div className="lds-ellipsis-btn"><div></div><div></div><div></div><div></div></div> : 'Guardar'}</span>
             </div>
             
         </div>

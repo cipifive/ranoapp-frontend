@@ -47,7 +47,7 @@ export const EditPlayer:FC<any> = (props):JSX.Element => {
 
                 <div className="flex flex-col self-start p-4 text-[#fcd34d] font-game2 text-2xl w-10/12  mb-8">
                     <span>Jugador</span>
-                    <select className="h-12 font-game2 text-2xl p-1 text-black" onChange={handleSelectUser}>
+                    <select className="h-12 font-game2 text-2xl p-1 bg-white text-black" onChange={handleSelectUser}>
                         <option className="text-xl" defaultChecked></option>
                         {
                             users.map((user:IUser) => (<option key={user.id} className="text-sm">{user.name}</option>))
@@ -64,7 +64,7 @@ export const EditPlayer:FC<any> = (props):JSX.Element => {
                 
                 <div className="text-[#fcd34d] font-game2 text-2xl w-full mb-8">
                     <span>Nombre</span>
-                    <input className="w-full h-12 font-game2 rounded  text-xl p-1 text-[#100235]" value={newName} onChange={(e:any) => setNewName(e.target.value)} />
+                    <input className="w-full h-12 font-game2 rounded bg-white text-xl p-1 text-[#100235]" value={newName} onChange={(e:any) => setNewName(e.target.value)} />
                 </div>
                 <span onClick={selectedUser && newName !== "" && selectedUser.name !== newName? () => handleEditUser() : () => {}} className={`${selectedUser && newName !== "" && selectedUser.name !== newName? ' bg-[#fcd34d]' : 'bg-zinc-300'} text-center self-center p-4 text-2xl font-game2  rounded`}>Actualizar</span>
             </div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CREATE_GAME, GET_GAME_BY_ID, GET_STARTED_GAMES, SAVE_ROUND } from "../constants/Game/endpoints";
+import { CREATE_GAME, END_GAME, GET_GAME_BY_ID, GET_STARTED_GAMES, SAVE_ROUND } from "../constants/Game/endpoints";
 import { INewGame } from "../models/game";
 
 export const createGame = (body:INewGame) => {
@@ -19,6 +19,11 @@ export const getStartedGames = () => {
 
 export const saveRound = (body:any) => {
     const res = axios.post(`${SAVE_ROUND}`,body)
+    return res
+}
+
+export const endGame = (body:any) => {
+    const res = axios.put(`${END_GAME}`,body)
     return res
 }
 

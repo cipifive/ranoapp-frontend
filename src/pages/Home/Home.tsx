@@ -7,7 +7,7 @@ export const Home:FC<any> = ():JSX.Element => {
     return (
         <div className={`flex flex-col justify-center items-center h-full relative `}>
             <HomeSettings />
-            <h1 className="font-game2 text-white h-1/3 flex justify-center items-center">RanoAPP</h1>
+            <h1 className="font-game2 text-white h-1/5 flex justify-center items-start">RanoAPP</h1>
             <HomeButtons /> 
         </div>
     )

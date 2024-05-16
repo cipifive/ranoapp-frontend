@@ -2,6 +2,7 @@
 @import './tables.css';
 @import './toast.css';
 @import './modal.css';
+@import './loading.css';
 @import "ag-grid-community/styles/ag-grid.css"; 
 @import "ag-grid-community/styles/ag-theme-quartz.css";
 @import "primereact/resources/themes/lara-light-cyan/theme.css";

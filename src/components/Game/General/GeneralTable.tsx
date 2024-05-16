@@ -5,7 +5,8 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
 
     const {
         data,
-        turn
+        turn,
+        round
     } = props
 
     const autoSizeStrategy:any = {
@@ -43,9 +44,20 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
         'row-selected' : (params:any) => { 
             const { id } = params.data
            
-            return id === turn?.id
+            return id === turn?.id && round <= 10
         
+        },
+    }
+
+    const getRowStyle = (params:any) => {
+        const maxPoints = Math.max(...data.map((d:any) => d.total))
+        if(params.data.total === maxPoints) {
+            return {
+                background: '#100235',
+                color: '#FB8C00'
+            }
         }
+        return null
     }
 
     return (
@@ -62,6 +74,7 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
                 suppressCellFocus
                 autoSizeStrategy={autoSizeStrategy}
                 rowClassRules={rowRules}
+                getRowStyle={getRowStyle}
             />
         </div>
     )
