@@ -89,7 +89,7 @@ export const Board:FC<any> = (props):JSX.Element => {
                 </div>
             </div>
             <div className="">
-                <select className="p-3 font-game2 rounded bg-white  w-10/12" onChange={handleSelectShot}>
+                <select className="p-3 font-game2 rounded bg-white text-black  w-10/12" onChange={handleSelectShot}>
                     <option value={11}>Todas</option>
                     {history.map((h:any) => {
                         return <option value={h.shot}>Lanzamiento {h.shot + 1}</option>
