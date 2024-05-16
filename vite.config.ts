@@ -14,23 +14,23 @@ export default defineConfig({
         theme_color: '#100235',
         icons: [
             {
-                src: 'ranoapp-logo.png',
+                src: 'pwa-64x64.png',
                 sizes: '64x64',
                 type: 'image/png'
             },
             {
-                src: 'ranoapp-logo.png',
+                src: 'pwa-192x192.png',
                 sizes: '192x192',
                 type: 'image/png'
             },
             {
-                src: 'ranoapp-logo.png',
+                src: 'pwa-512x512.png',
                 sizes: '512x512',
                 type: 'image/png',
                 purpose: 'any'
             },
             {
-                src: 'ranoapp-logo.png',
+                src: 'maskable-icon-512x512.png',
                 sizes: '512x512',
                 type: 'image/png',
                 purpose: 'maskable'
