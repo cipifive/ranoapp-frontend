@@ -51,7 +51,7 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
 
     const getRowStyle:any = (params:any) => {
         const maxPoints = Math.max(...data.map((d:any) => d.total))
-        if(params.data.total === maxPoints) {
+        if(params.data.total === maxPoints && round > 10) {
             return {
                 background: '#100235',
                 color: '#FB8C00'

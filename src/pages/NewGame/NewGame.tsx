@@ -36,6 +36,8 @@ export const NewGame:FC<any> = ():JSX.Element => {
 
     const [users, setUsers] = useState<IUser[]>([])
 
+    const [loading, setLoading] = useState<boolean>(false)
+
 
     const handleItemTemplate = (params:any) => {
        
@@ -90,6 +92,7 @@ export const NewGame:FC<any> = ():JSX.Element => {
 
     const handleStartGame = async() => {
         try {
+            setLoading(true)
             const jugadores:IUser[] = players.map((p:string) => ({
                 id: p,
                 name: users.find((u:any) => u.id == p)?.name ?? '-'
@@ -105,12 +108,13 @@ export const NewGame:FC<any> = ():JSX.Element => {
                 setNewGameID(data)
                 setTimeout(() => {
                     setShowTimer(true)
+                    setLoading(false)
                 },500)
             } else {
-
+                setLoading(false)
             }
         } catch (err:any) {
-            
+            setLoading(false)
         }
         
     }
@@ -178,7 +182,7 @@ export const NewGame:FC<any> = ():JSX.Element => {
                         </Droppable>
                     </DragDropContext>
                 </div>
-                <span className="text-center self-center p-4 text-2xl font-game2 mt-8  bg-[#fcd34d] rounded" onClick={handleStartGame}>Comenzar</span>
+                <span className={`text-center self-center p-4 text-2xl font-game2 mt-8 ${loading? 'bg-zinc-300' : 'bg-[#fcd34d]'}   rounded`} onClick={loading? () => {} : () => handleStartGame()}>{loading? <div className="lds-ellipsis-btn"><div></div><div></div><div></div><div></div></div> : 'Comenzar'}</span>
                 
             </div>
             <audio ref={audioRef} muted={!sounds} src={clic_sound} />
