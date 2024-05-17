@@ -13,6 +13,7 @@ import { AddPlayer } from "../../components/Players/AddPlayer/AddPlayer";
 import { EditPlayer } from "../../components/Players/EditPlayer/EditPlayer";
 import { getUsers } from "../../services/user_service";
 import { IUser } from "../../models/users";
+import { Stats } from "../../components/Players/Stats/Stats";
 
 export const Players:FC<any> = ():JSX.Element => {
 
@@ -67,7 +68,7 @@ export const Players:FC<any> = ():JSX.Element => {
             case 1:
                 return (<Ranking selectedMenu={selectedMenu} prevSelectedMenu={prevSelectedMenu} />)
             case 2:
-                return (<div className={`text-white ${selectedMenu === 2? prevSelectedMenu === 1? 'screen_component_entrar_derecha' : 'screen_component_entrar_izquierda' : selectedMenu < 2? 'screen_component_salir_derecha' : 'screen_component_salir_izquierda' }`}>AA</div>)
+                return (<Stats selectedMenu={selectedMenu} prevSelectedMenu={prevSelectedMenu} users={users} />)
             case 3:
                 return (<AddPlayer
                     selectedMenu={selectedMenu}
