@@ -380,7 +380,7 @@ export const EditRoundModal:FC<any> = (props):JSX.Element => {
             </div>
             <div className="flex w-full justify-around items-center p-4  mt-2 rounded">
             <span className={`text-center w-1/3  p-3 text-xl font-game2   rounded ${'bg-zinc-300'}`} onClick={loading? () => {} : () => handleClose()}>Cerrar</span>
-                <span className={`text-center w-1/3  p-3 text-xl font-game2   rounded ${loading? 'bg-zinc-300' : 'bg-[#fcd34d]'}`} onClick={loading? () => {} : () =>handleUpdateRound()}>{loading? <div className="lds-ellipsis-btn"><div></div><div></div><div></div><div></div></div> : 'Editar'}</span>
+                <span className={`text-center w-1/3  p-3 text-xl font-game2   rounded ${loading? 'bg-zinc-300' : 'bg-[#fcd34d]'}`} onClick={loading? () => {} : () =>handleUpdateRound()}>{loading? <div className="lds-ellipsis-btn"><div></div><div></div><div></div><div></div></div> : 'Guardar'}</span>
             </div>
       </Modal>
     )

@@ -72,13 +72,13 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
     }
 
     const handleEditCellContent = async (params:any) => {
+        console.log(params)
         if(params.value !== undefined) {
             try {
-                let keys = Object.keys(params.data)
-                let round = keys.filter((key:string) => key.startsWith('round'))[0].split("round")[1]
+                let roundIndex = parseInt(params.colDef.field.split("round")[1])
                 let body = {
                     id_user: params.data.id,
-                    id_round: parseInt(round),
+                    id_round: roundIndex,
                     id_game: id
                 }
                 const response = await getPlayerRound(body)
