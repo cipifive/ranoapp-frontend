@@ -1,13 +1,25 @@
 import { AgGridReact } from "ag-grid-react"
 import { FC, useState } from "react"
+import { EditRoundModal } from "./EditRoundModal"
+import { getPlayerRound } from "../../../services/game_service"
+import { useParams } from "react-router-dom"
+import { IRound } from "../../../models/round"
 
 export const GeneralTable:FC<any> = (props):JSX.Element => {
 
     const {
         data,
         turn,
-        round
+        round,
+        flag,
+        setFlag
     } = props
+
+    const {id}:any = useParams()
+
+    const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
+
+    const [selectedRound, setSelectedRound] = useState<any>()
 
     const autoSizeStrategy:any = {
         type: 'fitGridWidth',
@@ -60,11 +72,44 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
         return true
     }
 
+    const handleEditCellContent = async (params:any) => {
+        if(params.value !== undefined) {
+            try {
+                let keys = Object.keys(params.data)
+                let round = keys.filter((key:string) => key.startsWith('round'))[0].split("round")[1]
+                let body = {
+                    id_user: params.data.id,
+                    id_round: parseInt(round),
+                    id_game: id
+                }
+                const response = await getPlayerRound(body)
+                if(response.status === 200) {
+                    const { data } = response.data
+                    setSelectedRound({id_user: data.id_user,id_round:data.id_round,id_game:data.id_game,points: parseInt(data.points),boxes:JSON.parse(response.data.data.boxes)})
+                    setModalIsOpen(true)
+                }
+                
+            } catch (error) {
+                
+            }
+            
+        }
+    }
+
     return (
         <div
             className="ag-theme-quartz h-full w-full" // applying the grid theme
              // the grid will fill the size of the parent container
             >
+            <EditRoundModal
+                modalIsOpen={modalIsOpen}
+                setModalIsOpen={setModalIsOpen}
+                selectedRound={selectedRound}
+                setSelectedRound={setSelectedRound}
+                history={history}
+                flag={flag}
+                setFlag={setFlag} 
+                />
             <AgGridReact
                 rowData={data}
                 columnDefs={colDefs}
@@ -75,6 +120,7 @@ export const GeneralTable:FC<any> = (props):JSX.Element => {
                 autoSizeStrategy={autoSizeStrategy}
                 rowClassRules={rowRules}
                 getRowStyle={getRowStyle}
+                onCellClicked={handleEditCellContent}
             />
         </div>
     )

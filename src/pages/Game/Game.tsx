@@ -32,6 +32,8 @@ export const Game:FC<any> = ():JSX.Element => {
 
     const [loading, setLoading] = useState<boolean>(false)
 
+    const [flag, setFlag] = useState<boolean>(false)
+
 
     const {id}:any = useParams()
 
@@ -83,6 +85,8 @@ export const Game:FC<any> = ():JSX.Element => {
                     prevSelectedMenu={prevSelectedMenu}
                     gameData={data} 
                     nextPlayer={nextPlayer}
+                    flag={flag}
+                    setFlag={setFlag}
                     />)
         case 2:
             return (
@@ -135,7 +139,7 @@ export const Game:FC<any> = ():JSX.Element => {
 
     useEffect(() => {
         fetchGameByID()
-    }, [nextPlayer])
+    }, [nextPlayer,flag])
 
     useEffect(() => {
         playSound(audioRefMenu)

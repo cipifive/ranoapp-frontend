@@ -74,7 +74,7 @@ export const Stats:FC<any> = (props):JSX.Element => {
 
                                     <div className="flex flex-col justify-center items-center border bg-amber-400 rounded p-2 w-3/12">
                                         <span className=" text-[#100235] font-game2 text-xl ">Ratio</span>
-                                        <span className=" text-[#100235] font-game2 text-xl">{(userStats?.wins / userStats?.games) * 100}%</span>
+                                        <span className=" text-[#100235] font-game2 text-xl">{isNaN((userStats?.wins / userStats?.games) * 100)? 0 : (userStats?.wins / userStats?.games) * 100}%</span>
                                     </div>
                                 </div>
                                 <div className="flex justify-around items-center mb-4 w-full">
@@ -90,7 +90,7 @@ export const Stats:FC<any> = (props):JSX.Element => {
 
                                     <div className="flex flex-col justify-center items-center border bg-amber-400 rounded p-2 w-3/12">
                                         <span className=" text-[#100235] font-game2 text-xl ">Ratio</span>
-                                        <span className=" text-[#100235] font-game2 text-xl">{(userStats?.points / userStats?.shots).toFixed(2)}</span>
+                                        <span className=" text-[#100235] font-game2 text-xl">{isNaN(userStats?.points / userStats?.shots) ? 0 : (userStats?.points / userStats?.shots).toFixed(2)} <small>pts</small></span>
                                     </div>
                                 </div>
                                

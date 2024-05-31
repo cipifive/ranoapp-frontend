@@ -11,7 +11,9 @@ export const General:FC<any> = (props):JSX.Element => {
         turn,
         round,
         selectedMenu,
-        gameData
+        gameData,
+        flag,
+        setFlag
     } = props
 
 
@@ -101,7 +103,7 @@ export const General:FC<any> = (props):JSX.Element => {
 
             }
             
-            <GeneralTable data={parseGameData(gameData)} turn={turn} round={round} />
+            <GeneralTable data={parseGameData(gameData)} turn={turn} round={round} flag={flag} setFlag={setFlag} />
         </div>
     )
 }

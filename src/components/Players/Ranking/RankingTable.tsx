@@ -1,6 +1,7 @@
 import { AgGridReact } from "ag-grid-react"
 import { FC, useState } from "react"
 import { FaMedal } from "react-icons/fa";
+import { EditShotModal } from "../../Board/EditShotModal/EditShotModal";
 
 export const RankingTable:FC<any> = (props):JSX.Element => {
 
