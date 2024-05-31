@@ -3,7 +3,6 @@ import { FC, useState } from "react"
 import { EditRoundModal } from "./EditRoundModal"
 import { getPlayerRound } from "../../../services/game_service"
 import { useParams } from "react-router-dom"
-import { IRound } from "../../../models/round"
 
 export const GeneralTable:FC<any> = (props):JSX.Element => {
 
